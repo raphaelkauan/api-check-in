@@ -70,4 +70,18 @@ export class EventService {
 
         return { data };
     }
+
+    async deleteEvent(eventId: string) {
+        const deleteEvent = await this.prisma.event.delete({
+            where: {
+                id: eventId,
+            },
+        });
+
+        if (deleteEvent === null) {
+            throw new HttpException("Esse id não existe!", HttpStatus.BAD_REQUEST);
+        }
+
+        return "Evento deletado com sucesso!";
+    }
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
 import { EventService } from "./event.service";
 import { CreateEventDto } from "./dto/create-event.dto";
 import { PrismaService } from "src/libs/prisma.service";
@@ -20,5 +20,10 @@ export class EventController {
     @Get(":eventId")
     async getEvent(@Param("eventId") eventId: string) {
         return this.eventService.getEvent(eventId);
+    }
+
+    @Delete("delete/:eventId")
+    async deleteEvent(@Param("eventId") eventId: string) {
+        return this.eventService.deleteEvent(eventId);
     }
 }
