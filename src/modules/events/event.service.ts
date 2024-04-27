@@ -7,10 +7,6 @@ import { generateSlug } from "src/utils/functions/generateSlug";
 export class EventService {
     constructor(private prisma: PrismaService) {}
 
-    getHello(): string {
-        return "Rota de eventos!";
-    }
-
     async create(event: CreateEventDto) {
         const title = event.title;
         const slug = generateSlug(event.slug);

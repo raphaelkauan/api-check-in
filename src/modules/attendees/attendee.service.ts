@@ -7,12 +7,6 @@ import { Request } from "express";
 export class AttendeeService {
     constructor(private prisma: PrismaService) {}
 
-    async getTxt() {
-        const nome = "raphael";
-
-        return nome;
-    }
-
     async createAttendees(eventId: string, attendee: CreateAttendeeDto) {
         const data = {
             name: attendee.name,

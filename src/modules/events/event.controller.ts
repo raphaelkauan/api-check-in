@@ -2,18 +2,15 @@ import { Body, Controller, Get, Param, Post } from "@nestjs/common";
 import { EventService } from "./event.service";
 import { CreateEventDto } from "./dto/create-event.dto";
 import { PrismaService } from "src/libs/prisma.service";
+import { ApiTags } from "@nestjs/swagger";
 
+@ApiTags("Events")
 @Controller("events")
 export class EventController {
     constructor(
         private readonly eventService: EventService,
         private readonly prisma: PrismaService,
     ) {}
-
-    @Get()
-    getHello(): string {
-        return this.eventService.getHello();
-    }
 
     @Post()
     async create(@Body() event: CreateEventDto) {
